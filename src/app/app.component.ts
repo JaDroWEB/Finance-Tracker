@@ -80,7 +80,9 @@ export class AppComponent {
     }
 
     public toggleSidebar(): void {
-        this.sidebar?.toggle();
+        if (this.sidebar?.fixedValue) {
+            this.sidebar?.toggle();
+        }
     }
 
     public logout(): void {

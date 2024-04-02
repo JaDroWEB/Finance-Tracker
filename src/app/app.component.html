@@ -3,7 +3,7 @@
         <nb-layout>
             <nb-layout-header fixed>
                 <div class="menu-header">
-                    <button nbButton (click)="toggleSidebar()">
+                    <button nbButton (click)="sidebar.toggle()">
                         <nb-icon icon="menu"></nb-icon>
                     </button>
                     <h2 class="responsive">{{ 'Finance Tracker' | translate }}</h2>
@@ -19,7 +19,7 @@
             </nb-layout-header>
             <nb-sidebar [fixed]="sidebarFixed$ | async" #sidebar>
                 <div class="menu-content">
-                    <nb-menu [items]="menuItems"></nb-menu>
+                    <nb-menu [items]="menuItems" (click)="toggleSidebar()"></nb-menu>
                     <button nbButton (click)="logout()"><nb-icon icon="log-out-outline"></nb-icon>Logout</button>
                 </div>
             </nb-sidebar>
