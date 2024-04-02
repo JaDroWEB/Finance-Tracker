@@ -1,0 +1,41 @@
+<nb-card>
+    @switch (state$ | async) {
+        @case ('error') {
+            <p>{{ 'Something went wrong' | translate }}</p>
+        }
+        @case ('loaded') {
+            <nb-card-header>
+                <h3>{{ 'Add Category' | translate }}</h3>
+            </nb-card-header>
+            <nb-card-body>
+                <form [formGroup]="form">
+                    <div class="input-group">
+                        <label for="name">{{ 'Name' | translate }}</label>
+                        <input id="name" type="text" nbInput formControlName="name" />
+                    </div>
+                    <div class="input-group">
+                        <label for="color">{{ 'Color (hex)' | translate }}</label>
+                        <input id="color" type="text" nbInput formControlName="color" />
+                    </div>
+                    <!-- <div class="input-group">
+                    <label for="type">{{ 'Type' | translate }}</label>
+                    <nb-select id="type" formControlName="type" placeholder="Select Category">
+                      @for (category of categoryTypes; track $index) {
+                        <nb-option [value]="category">{{ category }}</nb-option>
+                      }
+                    </nb-select>
+                  </div> -->
+                </form>
+            </nb-card-body>
+            <nb-card-footer class="btn-row">
+                <button nbButton status="primary" (click)="save()">{{ 'Save' | translate }}</button>
+                <button nbButton status="secondary" (click)="close()">{{ 'Close' | translate }}</button>
+            </nb-card-footer>
+        }
+        @default {
+            <nb-card-body>
+                <nb-spinner size="giant"></nb-spinner>
+            </nb-card-body>
+        }
+    }
+</nb-card>

@@ -1,0 +1,58 @@
+<nb-card>
+    @switch (state$ | async) {
+        @case ('error') {
+            <p>{{ 'Something went wrong' | translate }}</p>
+        }
+        @case ('loaded') {
+            <nb-card-header>
+                @if (isAdd) {
+                    <h3>{{ 'Add Transaction' | translate }}</h3>
+                } @else {
+                    <h3>{{ 'Edit Transaction' | translate }}</h3>
+                }
+            </nb-card-header>
+            <nb-card-body>
+                <form [formGroup]="form">
+                    <div class="input-group">
+                        <label for="name">{{ 'Name' | translate }}</label>
+                        <input id="name" type="text" nbInput formControlName="name" />
+                    </div>
+                    <div class="input-group">
+                        <label for="value">{{ 'Value (€)' | translate }}</label>
+                        <input id="value" type="number" nbInput formControlName="value" />
+                    </div>
+                    <div class="input-group w-100">
+                        <label for="description">{{ 'Description' | translate }}</label>
+                        <textarea
+                            id="description"
+                            type="text"
+                            nbInput
+                            fullWidth
+                            formControlName="description"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label for="createdAt">{{ 'Date' | translate }}</label>
+                        <input id="date" type="date" nbInput formControlName="createdAt" />
+                    </div>
+                    <div class="input-group">
+                        <label for="categoryId">{{ 'Category' | translate }}</label>
+                        <nb-select id="categoryId" formControlName="categoryId" placeholder="Select Category">
+                            @for (category of categories$ | async; track category.id) {
+                                <nb-option [value]="category.id">{{ category.name }}</nb-option>
+                            }
+                        </nb-select>
+                    </div>
+                </form>
+            </nb-card-body>
+            <nb-card-footer class="btn-row">
+                <button nbButton status="primary" (click)="save()">{{ 'Save' | translate }}</button>
+                <button nbButton status="secondary" (click)="close()">{{ 'Close' | translate }}</button>
+            </nb-card-footer>
+        }
+        @default {
+            <nb-card-body>
+                <nb-spinner size="giant"></nb-spinner>
+            </nb-card-body>
+        }
+    }
+</nb-card>

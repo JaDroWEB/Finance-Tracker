@@ -1,0 +1,41 @@
+.responsive {
+    flex-wrap: wrap;
+
+    :nth-child(1) {
+        order: 1;
+        width: 100%;
+    }
+    :nth-child(2) {
+        order: 3;
+        width: 100%;
+    }
+    :nth-child(3) {
+        width: 100%;
+        order: 2;
+    }
+
+    @media screen and (min-width: 900px) {
+        :nth-child(1) {
+            width: 50%;
+            flex: 1;
+        }
+        :nth-child(3) {
+            width: 50%;
+        }
+    }
+
+    @media screen and (min-width: 1450px) {
+        :nth-child(1) {
+            width: 33.33%;
+            order: unset;
+        }
+        :nth-child(2) {
+            width: 33.33%;
+            order: unset;
+        }
+        :nth-child(3) {
+            width: 33.33%;
+            order: unset;
+        }
+    }
+}

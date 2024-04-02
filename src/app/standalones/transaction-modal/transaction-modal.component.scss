@@ -1,0 +1,28 @@
+nb-card {
+    max-width: 600px;
+}
+
+.btn-row {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1.125rem;
+    margin-top: 1.125rem;
+}
+
+form {
+    display: flex;
+    gap: 1.125rem;
+    flex-wrap: wrap;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    label {
+        font-size: 0.875rem;
+        font-weight: 700;
+        color: darkgrey;
+    }
+}

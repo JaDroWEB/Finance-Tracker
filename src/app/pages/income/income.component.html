@@ -1,0 +1,15 @@
+<div class="row row-1">
+    <app-pie-chart
+        [chartData]="pieChartData$ | async"
+        [state]="pieChartState$ | async"
+        [title]="'Incomes by Categories'"></app-pie-chart>
+</div>
+<div class="row row-1">
+    <app-line-chart
+        [chartData]="lineChartData$ | async"
+        [state]="lineChartState$ | async"
+        [title]="'Incomes Over Time'"></app-line-chart>
+</div>
+<div class="row row-1 h-unset">
+    <app-income-table></app-income-table>
+</div>

@@ -1,0 +1,21 @@
+<div class="row row-3 responsive">
+    <app-total-card
+        [title]="'Total Expenses'"
+        [value]="expensesTotal$ | async"
+        [state]="pieChartState$ | async"></app-total-card>
+    <app-pie-chart
+        [chartData]="pieChartData$ | async"
+        [state]="pieChartState$ | async"
+        [title]="'Expenses vs Incomes'"></app-pie-chart>
+    <app-total-card
+        [title]="'Total Incomes'"
+        [value]="incomeTotal$ | async"
+        [state]="pieChartState$ | async"></app-total-card>
+</div>
+
+<div class="row row-1">
+    <app-column-chart
+        [chartData]="columnChartData$ | async"
+        [state]="columnChartState$ | async"
+        [title]="'Expenses vs Incomes'"></app-column-chart>
+</div>

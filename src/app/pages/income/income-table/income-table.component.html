@@ -1,0 +1,72 @@
+<nb-card>
+    @switch (state$ | async) {
+        @case ('error') {
+            <p>{{ 'Something went wrong' | translate }}</p>
+        }
+        @case ('loaded') {
+            <nb-card-header>
+                <div class="card-header">
+                    <h3>{{ 'Incomes List' | translate }}</h3>
+                    <nb-actions size="small">
+                        <nb-action
+                            icon="plus-outline"
+                            [nbTooltip]="'Add new transaction' | translate"
+                            (click)="addTransaction()"></nb-action>
+                        <nb-action
+                            icon="plus-square-outline"
+                            [nbTooltip]="'Add new income category' | translate"
+                            (click)="addCategory()"></nb-action>
+                    </nb-actions>
+                </div>
+            </nb-card-header>
+            <nb-card-body>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>{{ 'Date' | translate }}</th>
+                                <th>{{ 'Category' | translate }}</th>
+                                <th>{{ 'Name' | translate }}</th>
+                                <th>{{ 'Description' | translate }}</th>
+                                <th>{{ 'Value' | translate }}</th>
+                                <th>{{ 'Actions' | translate }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (income of incomes$ | async; track income.id) {
+                                <tr>
+                                    <td>{{ income.createdAt | date }}</td>
+                                    <td>{{ income.category }}</td>
+                                    <td>{{ income.name }}</td>
+                                    <td>{{ income.description }}</td>
+                                    <td>{{ income.value | currency }}</td>
+                                    <td>
+                                        <nb-actions size="small">
+                                            <nb-action
+                                                icon="edit-outline"
+                                                [nbTooltip]="'Edit transaction' | translate"
+                                                (click)="openEditTransactionDialog(income.id)"></nb-action>
+                                            <nb-action
+                                                icon="trash-outline"
+                                                [nbTooltip]="'Delete transaction' | translate"
+                                                (click)="deleteTransaction(income)"></nb-action>
+                                        </nb-actions>
+                                    </td>
+                                </tr>
+                            } @empty {
+                                <tr>
+                                    <td colspan="6">{{ 'No incomes found' | translate }}</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </nb-card-body>
+        }
+        @default {
+            <nb-card-body>
+                <nb-spinner size="giant"></nb-spinner>
+            </nb-card-body>
+        }
+    }
+</nb-card>

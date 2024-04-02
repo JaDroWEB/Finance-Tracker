@@ -1,0 +1,24 @@
+.menu-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+}
+
+.menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    button {
+        height: fit-content;
+    }
+}
+
+.responsive {
+    @media screen and (max-width: 768px) {
+        display: none;
+    }
+}

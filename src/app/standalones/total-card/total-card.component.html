@@ -1,0 +1,22 @@
+<nb-card>
+    @switch (loadState()) {
+        @case ('error') {
+            <p>{{ 'Something went wrong' | translate }}</p>
+        }
+        @case ('loaded') {
+            @if (title) {
+                <nb-card-header>
+                    <h3>{{ title | translate }}</h3>
+                </nb-card-header>
+            }
+            <nb-card-body>
+                <div class="total-value" [innerHTML]="value"></div>
+            </nb-card-body>
+        }
+        @default {
+            <nb-card-body>
+                <nb-spinner size="giant"></nb-spinner>
+            </nb-card-body>
+        }
+    }
+</nb-card>

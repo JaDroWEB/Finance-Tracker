@@ -1,0 +1,15 @@
+<div class="row row-1">
+    <app-pie-chart
+        [chartData]="pieChartData$ | async"
+        [state]="state$ | async"
+        [title]="'Expenses by Categories'"></app-pie-chart>
+</div>
+<div class="row row-1">
+    <app-line-chart
+        [chartData]="lineChartData$ | async"
+        [state]="state$ | async"
+        [title]="'Expenses Over Time'"></app-line-chart>
+</div>
+<div class="row row-1 h-unset">
+    <app-expenses-table></app-expenses-table>
+</div>
